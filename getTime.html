@@ -1,0 +1,148 @@
+<html>
+<head>
+<title> Time Zone COnverter</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+function calc(){
+	var yr=document.getElementById("yr1");
+	var mon=document.getElementById("mon1");
+	var dt=document.getElementById("date1");
+	var hour=document.getElementById("hr1");
+	var minute=document.getElementById("min1");
+
+	var date1= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
+	var date2= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
+	var date3= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
+	date1.setMinutes(date1.getMinutes()-330);
+	document.write("UK :"+date1.toLocaleDateString()+ " "+date1.toLocaleTimeString());
+	date2.setMinutes(date2.getMinutes()-570);
+	document.write("<br>EST :"+date2.toLocaleDateString()+ " "+date2.toLocaleTimeString());
+	
+
+	
+}
+</script>
+</head>
+<body>
+<div class="container">
+<h1> Time Zone converter</h1>
+<form role="form">
+<div class="form-group">
+ <div class="col-xs-2">
+<label for="hr1">Hours</label>
+<select class="form-control" id="hr1" >
+<script type="text/javascript">
+var d= new Date();
+for( i=0;i<24;i++){
+	
+	if(i==d.getHours()){
+		document.write("<option selected='true'>");
+	}
+	else{
+		document.write("<option>");
+	}
+	document.write(i);
+	document.write("</option>");
+}
+</script>
+</select>
+</div>
+
+ <div class="col-xs-2">
+<label for="min1">Minutes</label>
+<select class="form-control" id="min1" >
+<script type="text/javascript">
+var d= new Date();
+for( i=0;i<=59;i++){
+	
+	if(i==d.getMinutes()){
+		document.write("<option selected='true'>");
+	}
+	else{
+		document.write("<option>");
+	}
+	document.write(i);
+	document.write("</option>");
+}
+</script>
+</select>
+</div>
+
+
+<div class="form-group">
+ <div class="col-xs-2">
+<label for="date1">Date</label>
+<select class="form-control" id="date1" >
+<script type="text/javascript">
+var d= new Date();
+for( i=1;i<=31;i++){
+	
+	if(i==d.getDate()){
+		document.write("<option selected='true'>");
+	}
+	else{
+		document.write("<option>");
+	}
+	document.write(i);
+	document.write("</option>");
+}
+</script>
+</select>
+</div>
+
+
+<div class="form-group">
+ <div class="col-xs-2">
+<label for="mon1">Month</label>
+<select class="form-control" id="mon1" >
+<script type="text/javascript">
+var d= new Date();
+for( i=0;i<12;i++){
+	
+	if(i==d.getMonth()){
+		document.write("<option selected='true'>");
+	}
+	else{
+		document.write("<option>");
+	}
+	document.write(i+1);
+	document.write("</option>");
+}
+</script>
+</select>
+</div>
+
+<div class="form-group">
+ <div class="col-xs-2">
+<label for="yr1">Year</label>
+<select class="form-control" id="yr1" >
+<script type="text/javascript">
+var d= new Date();
+for( i=1900;i<=2199;i++){
+	
+	if(i==d.getFullYear()){
+		document.write("<option selected='true'>");
+	}
+	else{
+		document.write("<option>");
+	}
+	document.write(i);
+	document.write("</option>");
+}
+</script>
+</select>
+</div>
+
+</div>
+ <!--<div class="col-xs-2">-->
+<br/>
+<button type="submit" onclick="calc()"  class="btn btn-success">Go.!</button>
+
+
+</form>
+
+
+
+</html>
