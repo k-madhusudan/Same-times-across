@@ -4,26 +4,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script>
-function calc(){
-	var yr=document.getElementById("yr1");
-	var mon=document.getElementById("mon1");
-	var dt=document.getElementById("date1");
-	var hour=document.getElementById("hr1");
-	var minute=document.getElementById("min1");
 
-	var date1= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
-	var date2= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
-	var date3= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
-	date1.setMinutes(date1.getMinutes()-330);
-	document.write("UK :"+date1.toLocaleDateString()+ " "+date1.toLocaleTimeString());
-	date2.setMinutes(date2.getMinutes()-570);
-	document.write("<br>EST :"+date2.toLocaleDateString()+ " "+date2.toLocaleTimeString());
-	
-
-	
-}
-</script>
 </head>
 <body>
 <div class="container">
@@ -138,11 +119,59 @@ for( i=1900;i<=2199;i++){
 </div>
  <!--<div class="col-xs-2">-->
 <br/>
-<button type="submit" onclick="calc()"  class="btn btn-success">Go.!</button>
+<button type="submit" onclick="calc(); return false;"  class="btn btn-success">Go.!</button>
 
+
+
+
+<table class="table" id="tab1" style="display:none">
+<tr>
+	<th>Country</th>
+	<th>Timezone</th>
+	<th>Time</th>
+</tr>
+<script>
+var cnty= ["India","UK","Australia"];
+var tzone=["IST" ,"GMT", "ACT" ];
+	for(i=0;i<3;i++){
+	document.write("<tr>");
+	document.write("<td>"+cnty[i]+"</td>");
+
+	document.write("<td>"+tzone[i]+"</td>");
+	document.write("<td id='tval"+i+"' >"+i+"</td>");
+	document.write("</tr>")
+	}
+</script>
+</table>
 
 </form>
+<script>
+function calc(){
+	//alert("Hello");
+	var yr=document.getElementById("yr1");
+	var mon=document.getElementById("mon1");
+	var dt=document.getElementById("date1");
+	var hour=document.getElementById("hr1");
+	var minute=document.getElementById("min1");
 
-
-
+	var date1= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
+	var date2= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
+	var date3= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
+	date1.setMinutes(date1.getMinutes()-330);
+	
+	date2.setMinutes(date2.getMinutes()-570);
+	
+	date3.setMinutes(date3.getMinutes()+270);
+	
+	//Changed to innerHTML (Silly me!)
+	document.getElementById("tval0").innerHTML= date1;
+	document.getElementById("tval1").innerHTML= date2;	
+	document.getElementById("tval2").innerHtml= date3;
+	document.getElementById("tab1").style.display="table";
+	
+	//Adding return statement at call as the page was getting refreshed another time 
+	
+}
+</script>
+</body>
 </html>
