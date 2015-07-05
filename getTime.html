@@ -157,16 +157,16 @@ function calc(){
 	var date1= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
 	var date2= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
 	var date3= new Date(yr.value,mon.value-1,dt.value,hour.value,minute.value);
-	date1.setMinutes(date1.getMinutes()-330);
+	//date1.setMinutes(date1.getMinutes()-330);
 	
-	date2.setMinutes(date2.getMinutes()-570);
+	date2.setMinutes(date2.getMinutes()-330);
 	
 	date3.setMinutes(date3.getMinutes()+270);
 	
 	//Changed to innerHTML (Silly me!)
-	document.getElementById("tval0").innerHTML= date1;
-	document.getElementById("tval1").innerHTML= date2;	
-	document.getElementById("tval2").innerHtml= date3;
+	document.getElementById("tval0").innerHTML= date1.toLocaleDateString()+" "+date1.toLocaleTimeString();
+	document.getElementById("tval1").innerHTML= date2.toLocaleDateString()+" "+date2.toLocaleTimeString();	
+	document.getElementById("tval2").innerHTML= date3.toLocaleDateString()+" "+date3.toLocaleTimeString();
 	document.getElementById("tab1").style.display="table";
 	
 	//Adding return statement at call as the page was getting refreshed another time 
